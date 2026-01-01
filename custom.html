@@ -26,7 +26,7 @@
         }
     };
 
-    if (is_restricted) {
+    let hide_content = () => {
         for (let ele of Array.from(document.querySelectorAll(CONTENT_SELECTOR))) {
             if (ele.classList.contains("header")) {
                 ele.addEventListener("click", unhide_content);
@@ -36,5 +36,9 @@
             }
             ele.classList.add("hidden");
         }
+    };
+
+    if (is_restricted) {
+        document.addEventListener("DOMContentLoaded", hide_content);
     }
 </script>
