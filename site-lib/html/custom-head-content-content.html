@@ -2,39 +2,4 @@
 #right-content {
     display: none;
 }
-.header.hidden::after {
-    display: block;
-    content: "\nWarning, the following content is for a DM, click the title to view content but be warned if you are a PC you may ruin all the fun.";
-}
-
-.hidden {
-    display: none;
-}
 </style>
-<script type="module">
-    const PC_RESTRICTED_PAGES = [
-        "02.-simulator-mission.html",
-        "03.-recovery-mission.html",
-    ];
-    const CONTENT_SELECTOR = ".markdown-preview-section > div";
-
-    let current_page = location.pathname.split('/').pop();
-    let is_restricted = PC_RESTRICTED_PAGES.indexOf(current_page) > -1;
-    let unhide_content = () => {
-        for (let ele of Array.from(document.querySelectorAll(CONTENT_SELECTOR))) {
-            ele.classList.remove("hidden");
-        }
-    };
-
-    if (is_restricted) {
-        for (let ele of Array.from(document.querySelectorAll(CONTENT_SELECTOR))) {
-            if (ele.classList.contains("header")) {
-                ele.addEventListener("click", unhide_content);
-            }
-            if (ele.classList.contains("footer")) {
-                continue;
-            }
-            ele.classList.add("hidden");
-        }
-    }
-</script>
