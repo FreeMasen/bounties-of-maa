@@ -27,6 +27,7 @@
     };
 
     let hide_content = () => {
+        debugger;
         for (let ele of Array.from(document.querySelectorAll(CONTENT_SELECTOR))) {
             if (ele.classList.contains("header")) {
                 ele.addEventListener("click", unhide_content);
