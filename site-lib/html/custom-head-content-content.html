@@ -13,10 +13,17 @@
     console.log("custom js started!");
     let toggle_hidden = (eles) => {
         for (let i = 0; i < eles.length; i++) {
+            /**@type HTMLDivElement */
             let el = eles[i];
             if (el.classList.contains("header")) {
                 console.log("skipping header");
-                el.classList.toggle("expand-trigger");
+                if (el.classList.toggle("expand-trigger")) {
+                    el.onclick = ev => {
+                        ev.preventDefault();
+                        toggle_hidden(document.querySelectorAll(".markdown-preview-section > div"));
+                        return false;
+                    }
+                }
                 continue;
             }
             if (el.classList.toggle("hidden")) {
