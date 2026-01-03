@@ -13,7 +13,10 @@
     console.log("custom js started!");
     new MutationObserver((...arg) => {
         console.log("mutation", ...arg)
-    }).observe(document.querySelector("#navbar"));
+    }).observe(document.querySelector("#navbar"), {
+        subtree: true,
+        childList: true,
+    });
 
     let toggle_hidden = (eles) => {
         for (let i = 0; i < eles.length; i++) {
