@@ -5,7 +5,7 @@
 .hidden {
     display: none;
 }
-.header + .hidden::after {
+.expand-trigger::after {
     content: "click to unhide content";
 }
 </style>
@@ -16,6 +16,7 @@
             let el = eles[i];
             if (el.classList.contains("header")) {
                 console.log("skipping header");
+                el.classList.toggle("expand-trigger");
                 continue;
             }
             if (el.classList.toggle("hidden")) {
