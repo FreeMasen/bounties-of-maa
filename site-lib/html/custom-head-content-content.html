@@ -5,6 +5,9 @@
 .hidden {
     display: none;
 }
+.header + .hidden::after {
+    content: "click to unhide content";
+}
 </style>
 <script type="module">
     console.log("custom js started!");
