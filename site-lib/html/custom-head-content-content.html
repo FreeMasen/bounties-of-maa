@@ -11,6 +11,10 @@
 </style>
 <script type="module">
     console.log("custom js started!");
+    new MutationObserver((...arg) => {
+        console.log("mutation", ...arg)
+    }).observe(document.querySelector("#navbar"));
+
     let toggle_hidden = (eles) => {
         for (let i = 0; i < eles.length; i++) {
             /**@type HTMLDivElement */
