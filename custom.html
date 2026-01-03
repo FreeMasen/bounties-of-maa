@@ -3,3 +3,36 @@
     display: none;
 }
 </style>
+<script type="module">
+    console.log("custom js started!");
+    new MutationObserver((...arg) => {
+        console.log("mutation", ...arg)
+    }).observe(document.getElementById("center-content"), {
+        subtree: true,
+        childList: true,
+    });
+
+    let toggle_hidden = (eles) => {
+        for (let i = 0; i < eles.length; i++) {
+            /**@type HTMLDivElement */
+            let el = eles[i];
+            if (el.classList.contains("header")) {
+                console.log("skipping header");
+                if (el.classList.toggle("expand-trigger")) {
+                    el.onclick = ev => {
+                        ev.preventDefault();
+                        toggle_hidden(document.querySelectorAll(".markdown-preview-section > div"));
+                        return false;
+                    }
+                }
+                continue;
+            }
+            if (el.classList.toggle("hidden")) {
+                console.log("added hidden");
+            } else {
+                console.log("removed hidden");
+            }
+        }
+    }
+    // toggle_hidden(document.querySelectorAll(".markdown-preview-section > div"))
+</script>
