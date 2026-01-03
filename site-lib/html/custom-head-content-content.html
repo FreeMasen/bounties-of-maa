@@ -13,7 +13,7 @@
     console.log("custom js started!");
     new MutationObserver((...arg) => {
         console.log("mutation", ...arg)
-    }).observe(document.getElementById("left-content"), {
+    }).observe(document.getElementById("center-content"), {
         subtree: true,
         childList: true,
     });
